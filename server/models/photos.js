@@ -1,5 +1,6 @@
-const mongoose = require("mongoose");
+import mongoose from "mongoose";
 const photoSchema = mongoose.Schema({
+  creator: String,
   message: String,
   selectedFile: String,
   likeCount: {

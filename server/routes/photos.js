@@ -1,6 +1,7 @@
 import express from "express";
+import { getPhotos, addPhoto } from "../controllers/Photos.js";
 const router = express.Router();
-import { getPhotos , addPhoto } from "../controllers/getPhotos.js";
+
 router.get("/", getPhotos);
 router.post("/", addPhoto);
 

@@ -1,24 +1,22 @@
-import PhotosMassage from "../models/photos";
+
+import PhotosMassage from "../models/photos.js";
 
 export const getPhotos = async (req, res) => {
   try {
-    const PhotosMassage = await PhotosMassage.find();
+    const PhotosMassages = await PhotosMassage.find();
 
     res.status(200).json(PhotosMassages);
   } catch (error) {
-    res.status(404).json({ message: error.message });
+    res.status(404).json({ message: error });
   }
 };
 export const addPhoto = async (req, res) => {
-  const { message, selectedFile } = req.body;
-  const newPhotosMassage = new PhotosMassage({
-    message,
-    selectedFile,
-  });
+  const photo = req.body;
+  const newPhoto = new PhotoMassage(photo);
   try {
-    await PhotosMassage.save();
-    res.status(201).json(PhotosMassage);
+    await newPhoto.save();
+    res.status(201).json(newPhoto);
   } catch (error) {
-    res.status(409).json({ message: error.message });
+    res.status(409).json({ message: error });
   }
 };
